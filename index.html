@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Crystal Maze: Shop Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bgm" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+    <audio id="sfx-wrong" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+    <audio id="sfx-win" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3"></audio>
+    <audio id="sfx-buy" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+
+    <div class="stars"></div>
+    <div class="twinkle"></div>
+    <div class="rain"></div>
+
+    <div id="game-wrapper">
+        <div id="ui-header">
+            <div class="ui-box" id="lives-container">
+                LIVES: <div id="hearts-row"></div>
+            </div>
+            <div class="ui-box">SCORE: <span id="score-count">0</span></div>
+            <button id="mute-btn" onclick="toggleMute()">🔊</button>
+        </div>
+        
+        <div id="maze-board">
+            <div id="player"></div>
+        </div>
+
+        <div id="mobile-controls">
+            <div class="d-pad">
+                <button class="d-btn" id="btn-up">▲</button>
+                <div class="d-row">
+                    <button class="d-btn" id="btn-left">◀</button>
+                    <button class="d-btn" id="btn-right">▶</button>
+                </div>
+                <button class="d-btn" id="btn-down">▼</button>
+            </div>
+        </div>
+
+        <div id="message-box" class="overlay">
+            <h1 id="title-text">ERGO MAZE</h1>
+            <div class="wallet-display">WALLET: $<span id="menu-wallet">0</span></div>
+            <p id="message-text">15 Doors. 30 Questions.<br>Find the Exit Portal.</p>
+            <button class="primary-btn" id="start-btn" onclick="startGame()">START ADVENTURE</button>
+            <button class="secondary-btn" onclick="openShop()">ITEM SHOP</button>
+        </div>
+    </div>
+
+    <div id="question-modal" class="overlay hidden">
+        <div class="modal-content">
+            <h3 class="modal-title">ErgoMaze</h3>
+            <div id="progress-dots"></div>
+            <p id="question-text"></p>
+            <div id="options-container"></div>
+            <p id="streak-msg" style="color:gold; font-size:8px; height:10px;"></p>
+        </div>
+    </div>
+
+    <div id="shop-modal" class="overlay hidden">
+        <div class="modal-content">
+            <h3 class="modal-title">THEME SHOP</h3>
+            <div class="wallet-display">BALANCE: $<span id="shop-wallet">0</span></div>
+            
+            <div style="margin-top:10px; text-align:left; border-bottom:1px solid #555; padding-bottom:5px;">THEMES</div>
+            <div class="shop-grid" id="theme-grid"></div>
+
+            <div style="margin-top:20px; text-align:left; border-bottom:1px solid #555; padding-bottom:5px;">UPGRADES</div>
+            <div class="shop-grid" id="upgrade-grid"></div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                <button class="reset-btn" onclick="resetGameData()">RESET SAVE</button>
+                <button class="secondary-btn" onclick="closeShop()">CLOSE SHOP</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
